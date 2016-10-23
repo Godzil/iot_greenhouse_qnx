@@ -15,48 +15,48 @@ char *theme;
 
 char *get_act_theme()
 {
-	return theme;
+    return theme;
 }
 
 void cgitheme_init()
 {
 
-	char *temp;	
+    char *temp;    
 
-	cgi_start();
-	cgi_parseparam();
+    cgi_start();
+    cgi_parseparam();
 
-	temp = cgi_getparam("theme");
-	if (temp == NULL)
-		temp = theme_base;
+    temp = cgi_getparam("theme");
+    if (temp == NULL)
+        temp = theme_base;
 
 #ifdef _WIN32
-	sprintf(themestart,".\\theme\\%s\\start.theme",temp);
-	sprintf(themeend,".\\theme\\%s\\end.theme",temp);
+    sprintf(themestart,".\\theme\\%s\\start.theme",temp);
+    sprintf(themeend,".\\theme\\%s\\end.theme",temp);
 #else /* On est pas sous windows, c qu'on est sous un UNIX */
-	sprintf(themestart,"./theme/%s/start.theme",temp);
-	sprintf(themeend,"./theme/%s/end.theme",temp);
+    sprintf(themestart,"./theme/%s/start.theme",temp);
+    sprintf(themeend,"./theme/%s/end.theme",temp);
 #endif
-	
-	if ( cgi_printfile(themestart) == -1 )
-	{
-	temp = theme_base;
+    
+    if ( cgi_printfile(themestart) == -1 )
+    {
+    temp = theme_base;
 #ifdef _WIN32
-	sprintf(themestart,".\\theme\\%s\\start.theme",temp);
-	sprintf(themeend,".\\theme\\%s\\end.theme",temp);
+    sprintf(themestart,".\\theme\\%s\\start.theme",temp);
+    sprintf(themeend,".\\theme\\%s\\end.theme",temp);
 #else /* On est pas sous windows, c qu'on est sous un UNIX */
-	sprintf(themestart,"./theme/%s/start.theme",temp);
-	sprintf(themeend,"./theme/%s/end.theme",temp);
+    sprintf(themestart,"./theme/%s/start.theme",temp);
+    sprintf(themeend,"./theme/%s/end.theme",temp);
 #endif
 
-	cgi_printfile(themestart);
-	}
-	
-	set_act_theme(temp);
-	
+    cgi_printfile(themestart);
+    }
+    
+    set_act_theme(temp);
+    
 }
 
 void cgitheme_close()
 {
-	cgi_printfile(themeend);
+    cgi_printfile(themeend);
 }

@@ -12,32 +12,32 @@ char cgi_BaseName[100];
 
 int main(int argc, char *argv[])
 {
-	cgi_start();
-	cgi_parseparam();
+    cgi_start();
+    cgi_parseparam();
 
-	cgitheme_init();
+    cgitheme_init();
 
-	strcpy(cgi_BaseName,argv[0]);
+    strcpy(cgi_BaseName,argv[0]);
 
 
-	if ( (cgi_getparam("restart")) != NULL )
-	{
-		//system("ls");
-		cgi_printfile("./files/restart.file");
-	}
-	else if (serre_test_start()==-1)
-	{
-		cgi_parsefile("./files/error-noserver.file");
-	}
-	else
-	{
-		cgi_parsefile("./files/base-start.file");
-		cgi_parsefile("./files/all.file");
-		cgi_parsefile("./files/base-end.file");
-	}
+    if ( (cgi_getparam("restart")) != NULL )
+    {
+        //system("ls");
+        cgi_printfile("./files/restart.file");
+    }
+    else if (serre_test_start()==-1)
+    {
+        cgi_parsefile("./files/error-noserver.file");
+    }
+    else
+    {
+        cgi_parsefile("./files/base-start.file");
+        cgi_parsefile("./files/all.file");
+        cgi_parsefile("./files/base-end.file");
+    }
 
-	cgitheme_close();
+    cgitheme_close();
 
-	cgi_cleanup();
-	return 0;
+    cgi_cleanup();
+    return 0;
 }
