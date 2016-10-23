@@ -36,7 +36,7 @@ typedef struct sockaddr_in SOCKADDR_IN;
 #include "cgi_theme_gest.h"
 #include "test_serre.h"
 
-char cgi_BaseName[100];
+char cgi_BaseName256;
 
 
 int main(int argc, char *argv[])
@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
 
     cgitheme_init();
 
-    strcpy(cgi_BaseName,argv[0]);
+    strncpy(cgi_BaseName,argv[0], 256);
 
 
     if ( (cgi_getparam("restart")) != NULL )

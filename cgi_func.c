@@ -17,7 +17,7 @@
 #define TRUE 1
 //#define DEBUG
 
-extern char cgi_BaseName[100];
+extern char cgi_BaseName[256];
 
 int cgi_started = FALSE;
 int cgi_paramparsed = FALSE;
